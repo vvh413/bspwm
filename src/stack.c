@@ -24,6 +24,7 @@
 
 #include <stdlib.h>
 #include "bspwm.h"
+#include "helpers.h"
 #include "window.h"
 #include "subscribe.h"
 #include "ewmh.h"
@@ -123,7 +124,7 @@ void remove_stack_node(node_t *n)
 int stack_level(client_t *c)
 {
 	int layer_level = (c->layer == LAYER_NORMAL ? 1 : (c->layer == LAYER_BELOW ? 0 : 2));
-	int state_level = (IS_TILED(c) ? 0 : (IS_FLOATING(c) ? 1 : 2));
+	int state_level = (IS_TILED(c) ? 0 : (IS_FULLSCREEN(c) ? 1 : 2));
 	return 3 * layer_level + state_level;
 }
 
